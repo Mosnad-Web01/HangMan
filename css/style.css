@@ -1,0 +1,403 @@
+@font-face {
+	font-family: "hangman";
+	src: url(./../assets/fonts/Photographs.ttf);
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root{
+	--white-color:#fff;
+	--black-color:#000000;
+  }
+
+html {
+	overflow: hidden;
+}
+
+body {
+	font-family: "hangman";
+}
+
+.container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.animationFrame {
+	width: 870px;
+	height: 700px;
+	box-shadow: inset 0 0 16px 32px var(--white-color);
+	position: relative;
+	background: url(../assets/images/download.png);
+	background-repeat: repeat-x;
+	animation: backgroundChange 20s linear infinite;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@keyframes backgroundChange {
+	0% {
+		background-position: -800px top;
+	}
+
+	100% {
+		background-position: 2200px top;
+	}
+}
+
+.animationFrame__boyContainer {
+	position: absolute;
+	top: 320px;
+	right: 30px;
+
+	width: 270px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.animationFrame__boyCharacter {
+	width: 190px;
+	height: 100%;
+	background: url(../assets/images/animations_9.f2d4c661.png);
+	height: 300px;
+	animation: walk 3s steps(9) infinite;
+}
+
+@keyframes walk {
+	0% {
+		background-position: 0 -844px;
+		height: 278px;
+	}
+
+	100% {
+		background-position: 0 1663px;
+		height: 260px;
+	}
+}
+
+.logoName {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 7rem;
+	letter-spacing: 1rem;
+	text-transform: uppercase;
+	z-index: 2;
+}
+
+.homeItems {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	gap: 20px;
+}
+
+.homeItems__buttons {
+	width: 230px;
+	height: 90px;
+	font-weight: bold;
+	background-color: var(--white-color);
+	border: 5px solid var(--black-color);
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.homeItems__links {
+	color: var(--black-color);
+	text-decoration: none;
+	font-size: 3rem;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.homeItems__buttons-active {
+	background-color: var(--black-color);
+}
+
+.homeItems__links-active {
+	color: #ffffff;
+}
+
+.buttonPlay {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 220px;
+	height: 90px;
+	color: var(--white-color);
+	background-color: var(--black-color);
+	border: 5px solid var(--black-color);
+	border-radius: 3px;
+	font-size: 4.5rem;
+	text-decoration: none;
+	text-transform: uppercase;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.homeIcon {
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	cursor: pointer;
+}
+
+.animationFrame__sound {
+	position: absolute;
+	left: 10%;
+	top: 85%;
+	cursor: pointer;
+}
+
+.single-player-page {
+	display: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.719);
+	z-index: 1000;
+}
+
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	height: 300px;
+	background-color: var(--white-color);
+	padding: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 22px;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn-close {
+	padding: 5px 30px;
+	color: var(--white-color);
+	background-color: var(--black-color);
+	font-family: "hangman";
+	cursor: pointer;
+	font-size: 32px;
+	border: 0;
+	border-radius: 4px;
+}
+
+.questionIcon {
+	width: 70px;
+	height: 65px;
+	position: absolute;
+	bottom: 35px;
+	left: 2%;
+	cursor: pointer;
+}
+
+
+/* ---------- Reasponsive 1024px ---------- */
+@media(max-width:1024px) {
+	.modal-content {
+		font-size: 20px;
+		height: 260px;
+	}
+}
+
+/* ---------- Reasponsive 870px ---------- */
+@media(max-width:870px) {
+	.animationFrame {
+		width: 700px;
+	}
+
+	.homeIcon {
+		left: 7%;
+	}
+
+	.questionIcon {
+		left: 6%;
+	}
+
+	.animationFrame__sound {
+		left: 15%;
+	}
+}
+
+/* ---------- Reasponsive 770px ---------- */
+@media(max-width:770px) {
+
+	.animationFrame {
+		width: 600px;
+	}
+
+	.logoName {
+		font-weight: bold;
+	}
+
+	.homeItems__buttons {
+		width: 190px;
+	}
+
+	.homeItems__links{
+		font-size: 2.4rem;
+	}
+
+	.buttonPlay {
+		font-size: 2.3rem;
+		width: 150px;
+		height: 70px;
+	}
+
+	.animationFrame__sound {
+		width: 50px;
+	}
+
+	.questionIcon {
+		display: none;
+	}
+}
+
+/* ---------- Reasponsive 600px ---------- */
+@media(max-width: 600px) {
+	.animationFrame {
+		width: 500px;
+	}
+
+	.animationFrame__boyContainer {
+		width: 210px;
+	}
+
+	.logoName {
+		top: 13%;
+		font-size: 4rem;
+	}
+
+	.homeItems__buttons {
+		height: 70px;
+	}
+
+	.homeItems__buttons--lowOpacity {
+		background-color: transparent;
+	}
+
+	.homeItems__links {
+		font-size: 2rem;
+	}
+
+	.buttonPlay {
+		font-size: 2.5rem;
+		font-weight: 700;
+		letter-spacing: 3px;
+	}
+
+	.animationFrame__sound {
+		height: 47px;
+		left: 5%;
+	}
+
+	.homeIcon {
+		left: 5%;
+	}
+
+	.homeIcon__image {
+		width: 40px;
+		height: 32px;
+	}
+
+}
+
+
+
+/* ---------- Reasponsive 490px ---------- */
+@media(max-width: 490px) {
+
+	.animationFrame {
+		width: 350px;
+	}
+
+	.homeItems__buttons {
+		width: 160px;
+	}
+
+	.homeItems__buttons--lowOpacity {
+		background-color: transparent;
+	}
+
+	.buttonPlay {
+		width: 100px;
+		height: 60px;
+	}
+
+	.animationFrame__sound {
+		width: 47px;
+	}
+}
+
+@media (max-width:325px) {
+	.animationFrame {
+		width: 250px;
+	}
+
+	.logoName {
+		letter-spacing: 5px;
+	}
+
+	.homeItems__links {
+		font-size: 1.5rem;
+	}
+
+	.homeItems__buttons {
+		width: 135px;
+		height: 65px;
+	}
+
+	.buttonPlay {
+		width: 80px;
+		height: 45px;
+		font-size: 1.8rem;
+	}
+
+	.animationFrame__sound {
+		top: 88%;
+	}
+
+}

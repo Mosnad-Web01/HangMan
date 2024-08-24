@@ -1,0 +1,368 @@
+@font-face {
+  font-family: "Proxima";
+  src: url(./../assets/fonts/ProximaSoft-Regular.woff2);
+}
+
+@font-face {
+  font-family: ProximaBold;
+  src: url(./../assets/fonts/ProximaSoft-ExtraBold.woff);
+}
+
+@font-face {
+  font-family: "hangman";
+  src: url(./../assets/fonts/Photographs.ttf);
+}
+
+html {
+  overflow: hidden;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --white-color:#fff;
+  --black-color:#000000;
+  --gray-color:#6d6d6d;
+  --red-color:rgb(230, 9, 9);
+  --border-radius : 4px;
+}
+
+body {
+  font-family: "Proxima";
+}
+
+.quickPlay {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickPlay__root {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.quickPlay__hang-body {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickPlay__hang-body>img {
+  position: absolute;
+  z-index: 2;
+}
+
+.quickPlay__buttons {
+  width: 300px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.quickPlay__button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+  background-color: var(--white-color);
+  border: 2px solid var(--black-color);
+  cursor: pointer;
+}
+
+.quickPlay__blanksParent {
+  width: 100%;
+  height: 30%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 65px;
+}
+
+.wordsWrapper {
+  display: flex;
+  gap: 10px;
+  order: 2;
+}
+
+.quickPlay__alphabet {
+  width: 20px;
+  height: 23px;
+  font-weight: bold;
+  font-size: 22px;
+  border-bottom: 3px solid var(--red-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quickPlay__blanksParent--top {
+  width: 80%;
+  font-size: 30px;
+}
+
+.quickPlay__paragraph {
+  display: none;
+}
+
+.quickPlay__wrong::after {
+  content: " ";
+  position: absolute;
+  left: -1px;
+  top: -2px;
+  transform-origin: left;
+  transform: rotate(45deg);
+  width: 149%;
+  height: 2px;
+  border-radius: var(--border-radius);
+  z-index: 2;
+}
+
+.quickPlay__wrong::before {
+  content: " ";
+  position: absolute;
+  left: -1px;
+  bottom: -2px;
+  transform-origin: left;
+  transform: rotate(-45deg);
+  width: 149%;
+  height: 2px;
+  border-radius: var(--border-radius);
+  z-index: 2;
+}
+
+.quickPlay__wrong,
+.quickPlay__correct {
+  border: 2px solid var(--gray-color);
+  opacity: 0.7;
+}
+
+.quickPlay__wrong::after,
+.quickPlay__wrong::before {
+  color: var(--gray-color);
+  background-color: var(--gray-color);
+  opacity: 0.7;
+}
+
+.result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  padding: 10px 0;
+  background-color: #4c4c4c;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  opacity: 0;
+  z-index: -1;
+  text-align: center;
+
+}
+
+.game-over,
+.game-win {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.game-over {
+  color: var(--red-color);
+  font-family: "hangman";
+  font-size: 62px;
+  letter-spacing: 4px;
+}
+
+.game-win {
+  color: rgb(0, 255, 0);
+  font-family: "hangman";
+  font-size: 62px;
+  letter-spacing: 4px;
+}
+
+.correct-word {
+  color: var(--white-color);
+  font-size: 42px;
+  font-weight: 600;
+  font-family: "hangman";
+}
+
+.result-gif {
+  width: 100px;
+  height: 100px;
+  margin: 10px 5px 20px 0px;
+}
+
+.reset {
+  padding: 3px 25px;
+  color: var(--black-color);
+  background-color: var(--white-color);
+  font-family: "hangman";
+  letter-spacing: 3px;
+  font-size: 32px;
+  font-weight: 700;
+  border: 0;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.homeIcon {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  cursor: pointer;
+}
+
+.homeIcon__image--smaller {
+  width: 45px;
+  height: 35px;
+}
+
+
+/* ---------- Reasponsive 770px ---------- */
+
+@media(max-width:770px) {
+
+  .container {
+    width: 400px;
+    height: 630px;
+  }
+  .quickPlay__blanksParent {
+    width: 100%;
+    height: 30%;
+    gap: 50px;
+    justify-content: flex-end;
+  }
+  .quickPlay__blanksParent--top {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .quickPlay__root {
+    width: 100%;
+    height: 70%;
+    padding-top: 30px;
+    justify-content: center;
+  }
+  .quickPlay__buttons {
+    height: auto;
+    gap: 0;
+  }
+  .quickPlay__button {
+    width: 30px;
+    height: 30px;
+  }
+  .quickPlay__button {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+  }
+  .homeIcon {
+    top: 2%;
+    left: 5%;
+  }
+
+  .homeIcon__image {
+    width: 40px;
+    height: 32px;
+  }
+
+  .result {
+    width: 300px;
+    padding: 10px;
+  }
+  .game-over {
+    font-size: 40px;
+  }
+  .game-win {
+    font-size: 40px;
+  }
+  .homeIcon__image--smaller {
+    display: none;
+  }
+  .correct-word {
+    font-size: 34px;
+  }
+}
+
+/* ---------- Reasponsive 680px ---------- */
+@media (max-width: 680px) {
+  .quickPlay__root {
+    gap: 0px;
+  }
+
+
+  .quickPlay__hang-body{
+    width: 270px;
+    height: 270px;
+  }
+
+  .quickPlay__hang-body> img {
+    width: 95%;
+    height: 95%;
+  } 
+}
+
+/* ---------- Reasponsive 610px ---------- */
+@media (max-width:610px) {
+
+  .quickPlay__root {
+    flex-direction: column;
+  }
+
+  .quickPlay__blanksParent {
+    height: 20%;
+  }
+
+  .quickPlay__blanksParent--top {
+    font-size: 20px;
+  }
+
+  .wordsWrapper {
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* ---------- Reasponsive 450px ---------- */
+
+@media(max-width: 450px) {
+  .quickPlay__blanksParent {
+    height: 30%;
+  }
+
+  .quickPlay__blanksParent--top {
+    font-size: 18px;
+  }
+
+  .quickPlay__hang-body> img {
+    width: 80%;
+    height: 80%;
+  } 
+}
